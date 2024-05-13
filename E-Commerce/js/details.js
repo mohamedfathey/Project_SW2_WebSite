@@ -50,7 +50,7 @@ function addToCart(id) {
     if (!localStorage.getItem("email")) {
         window.location = "login.html";
     } else {
-        let product = listProducts.find((item) => item.id == id);
+        let product = allProducts.find((item) => item.id == id);
         if (addedItems.some(e => e.id == product.id)) {
             addedItems = addedItems.map(e => {
                 if (e.id === product.id) {
@@ -91,5 +91,14 @@ cart.addEventListener('click', () => {
         } else {
             cartProduct.style.display = "none";
         }
+    }
+});
+
+let fav = document.getElementById("fav");
+let favItems = localStorage.getItem("favItems");
+
+fav.addEventListener('click', function () {
+    if (favItems) {
+        window.location.href = "favourite.html";
     }
 });
